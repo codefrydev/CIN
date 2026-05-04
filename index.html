@@ -175,6 +175,126 @@
             'FLC': 'Financial Lease Company'
         };
 
+        // NIC-2008 Division Codes from official MCA/NIC standards
+        const NIC_DIVISIONS = {
+            '01': 'Crop and animal production, hunting and related service activities',
+            '02': 'Forestry and logging',
+            '03': 'Fishing and aquaculture',
+            '05': 'Mining of coal and lignite',
+            '06': 'Extraction of crude petroleum and natural gas',
+            '07': 'Mining of metal ores',
+            '08': 'Other mining and quarrying',
+            '09': 'Mining support service activities',
+            '10': 'Manufacture of food products',
+            '11': 'Manufacture of beverages',
+            '12': 'Manufacture of tobacco products',
+            '13': 'Manufacture of textiles',
+            '14': 'Manufacture of wearing apparel',
+            '15': 'Manufacture of leather and related products',
+            '16': 'Manufacture of wood and products of wood and cork, except furniture',
+            '17': 'Manufacture of paper and paper products',
+            '18': 'Printing and reproduction of recorded media',
+            '19': 'Manufacture of coke and refined petroleum products',
+            '20': 'Manufacture of chemicals and chemical products',
+            '21': 'Manufacture of pharmaceuticals, medicinal chemical and botanical products',
+            '22': 'Manufacture of rubber and plastics products',
+            '23': 'Manufacture of other non-metallic mineral products',
+            '24': 'Manufacture of basic metals',
+            '25': 'Manufacture of fabricated metal products, except machinery and equipment',
+            '26': 'Manufacture of computer, electronic and optical products',
+            '27': 'Manufacture of electrical equipment',
+            '28': 'Manufacture of machinery and equipment n.e.c.',
+            '29': 'Manufacture of motor vehicles, trailers and semi-trailers',
+            '30': 'Manufacture of other transport equipment',
+            '31': 'Manufacture of furniture',
+            '32': 'Other manufacturing',
+            '33': 'Repair and installation of machinery and equipment',
+            '35': 'Electricity, gas, steam and air conditioning supply',
+            '36': 'Water collection, treatment and supply',
+            '37': 'Sewerage',
+            '38': 'Waste collection, treatment and disposal activities; materials recovery',
+            '39': 'Remediation activities and other waste management services',
+            '41': 'Construction of buildings',
+            '42': 'Civil engineering',
+            '43': 'Specialized construction activities',
+            '45': 'Wholesale and retail trade and repair of motor vehicles and motorcycles',
+            '46': 'Wholesale trade, except of motor vehicles and motorcycles',
+            '47': 'Retail trade, except of motor vehicles and motorcycles',
+            '49': 'Land transport and transport via pipelines',
+            '50': 'Water transport',
+            '51': 'Air transport',
+            '52': 'Warehousing and support activities for transportation',
+            '53': 'Postal and courier activities',
+            '55': 'Accommodation',
+            '56': 'Food and beverage service activities',
+            '58': 'Publishing activities',
+            '59': 'Motion picture, video and television programme production, sound recording and music publishing activities',
+            '60': 'Broadcasting and programming activities',
+            '61': 'Telecommunications',
+            '62': 'Computer programming, consultancy and related activities',
+            '63': 'Information service activities',
+            '64': 'Financial service activities, except insurance and pension funding',
+            '65': 'Insurance, reinsurance and pension funding, except compulsory social security',
+            '66': 'Other financial activities',
+            '68': 'Real estate activities',
+            '69': 'Legal and accounting activities',
+            '70': 'Activities of head offices; management consultancy activities',
+            '71': 'Architecture and engineering activities; technical testing and analysis',
+            '72': 'Scientific research and development',
+            '73': 'Advertising and market research',
+            '74': 'Other professional, scientific and technical activities',
+            '75': 'Veterinary activities',
+            '77': 'Rental and leasing activities',
+            '78': 'Employment activities',
+            '79': 'Travel agency, tour operator and other reservation service activities',
+            '80': 'Security and investigation activities',
+            '81': 'Services to buildings and landscape activities',
+            '82': 'Office administrative, office support and other business support activities',
+            '84': 'Public administration and defence; compulsory social security',
+            '85': 'Education',
+            '86': 'Human health activities',
+            '87': 'Residential care activities',
+            '88': 'Social work activities without accommodation',
+            '90': 'Creative, arts and entertainment activities',
+            '91': 'Libraries, archives, museums and other cultural activities',
+            '92': 'Gambling and betting activities',
+            '93': 'Sports activities and amusement and recreation activities',
+            '94': 'Activities of membership organizations',
+            '95': 'Repair of computers and personal and household goods',
+            '96': 'Other personal service activities',
+            '97': 'Activities of households as employers of domestic personnel',
+            '98': 'Undifferentiated goods and services-producing activities of private households for own use',
+            '99': 'Activities of extraterritorial organizations and bodies'
+        };
+
+        // Fine-tuned NIC-2008 Group Codes (3-digit level)
+        const NIC_GROUPS = {
+            '011': 'Growing of non-perennial crops', '012': 'Growing of perennial crops', '013': 'Plant propagation', '014': 'Animal production', '015': 'Mixed farming', '016': 'Support activities to agriculture and post-harvest crop activities', '017': 'Hunting, trapping and related service activities',
+            '101': 'Processing and preserving of meat', '102': 'Processing and preserving of fish, crustaceans and molluscs', '103': 'Processing and preserving of fruit and vegetables', '104': 'Manufacture of vegetable and animal oils and fats', '105': 'Manufacture of dairy products', '106': 'Manufacture of grain mill products, starches and starch products', '107': 'Manufacture of other food products', '108': 'Manufacture of prepared animal feeds',
+            '131': 'Spinning, weaving and finishing of textiles', '139': 'Manufacture of other textiles',
+            '141': 'Manufacture of wearing apparel, except fur apparel', '142': 'Manufacture of articles of fur', '143': 'Manufacture of knitted and crocheted apparel',
+            '201': 'Manufacture of basic chemicals, fertilizer and nitrogen compounds, plastics and synthetic rubber', '202': 'Manufacture of other chemical products', '203': 'Manufacture of man-made fibres',
+            '210': 'Manufacture of pharmaceuticals, medicinal chemical and botanical products',
+            '261': 'Manufacture of electronic components and boards', '262': 'Manufacture of computers and peripheral equipment', '263': 'Manufacture of communication equipment', '264': 'Manufacture of consumer electronics', '265': 'Manufacture of measuring, testing, navigating and control equipment',
+            '410': 'Construction of buildings',
+            '421': 'Construction of roads and railways', '422': 'Construction of utility projects', '429': 'Construction of other civil engineering projects',
+            '451': 'Sale of motor vehicles', '452': 'Maintenance and repair of motor vehicles', '453': 'Sale of motor vehicle parts and accessories', '454': 'Sale, maintenance and repair of motorcycles',
+            '461': 'Wholesale on a fee or contract basis', '462': 'Wholesale of agricultural raw materials and live animals', '463': 'Wholesale of food, beverages and tobacco', '464': 'Wholesale of household goods', '465': 'Wholesale of machinery, equipment and supplies', '469': 'Non-specialized wholesale trade',
+            '471': 'Retail sale in non-specialized stores', '472': 'Retail sale of food, beverages and tobacco', '473': 'Retail sale of automotive fuel', '474': 'Retail sale of ICT equipment', '475': 'Retail sale of other household equipment', '476': 'Retail sale of cultural and recreation goods', '477': 'Retail sale of other goods', '478': 'Retail sale via stalls and markets', '479': 'Retail trade not in stores, stalls or markets',
+            '551': 'Short term accommodation activities', '552': 'Camping grounds, recreational vehicle parks and trailer parks', '559': 'Other accommodation',
+            '561': 'Restaurants and mobile food service activities', '562': 'Event catering and other food service activities', '563': 'Beverage serving activities',
+            '620': 'Computer programming, consultancy and related activities',
+            '631': 'Data processing, hosting and related activities; web portals', '639': 'Other information service activities',
+            '641': 'Monetary intermediation', '642': 'Activities of holding companies', '643': 'Trusts, funds and similar financial entities', '649': 'Other financial service activities, except insurance and pension funding',
+            '681': 'Real estate activities with own or leased property', '682': 'Real estate activities on a fee or contract basis',
+            '691': 'Legal activities', '692': 'Accounting, bookkeeping and auditing activities; tax consultancy',
+            '701': 'Activities of head offices', '702': 'Management consultancy activities',
+            '721': 'Research and experimental development on natural sciences and engineering', '722': 'Research and experimental development on social sciences and humanities',
+            '851': 'Primary education', '852': 'Secondary education', '853': 'Higher education', '854': 'Other education', '855': 'Educational support activities',
+            '861': 'Hospital activities', '862': 'Medical and dental practice activities', '869': 'Other human health activities',
+            '960': 'Other personal service activities', '970': 'Activities of households as employers of domestic personnel'
+        };
+
         // Pre-defined SVG icons
         const ICONS = {
             Building: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>`,
@@ -286,13 +406,29 @@
                 const match = code.match(cinRegex);
                 if (match) {
                     const [_, listing, industry, stateCode, year, compType, regNo] = match;
+                    
+                    // Fine-tuned Industry Lookup
+                    const divisionCode = industry.slice(0, 2);
+                    const groupCode = industry.slice(0, 3);
+                    
+                    const divisionName = NIC_DIVISIONS[divisionCode] || 'Unknown Division';
+                    const groupName = NIC_GROUPS[groupCode];
+                    
+                    let industryName = divisionName;
+                    let industryDesc = `Registered under NIC Code: ${industry} (Division ${divisionCode})`;
+
+                    if (groupName) {
+                        industryName = groupName;
+                        industryDesc = `NIC: ${industry} (Group ${groupCode}: ${groupName} / Div ${divisionCode}: ${divisionName})`;
+                    }
+
                     renderResult({
                         type: 'CIN',
                         raw: code,
                         formatted: code,
                         details: [
                             { label: 'Listing Status', value: listing === 'L' ? 'Listed Company' : 'Unlisted Company', icon: ICONS.ActivityGreen },
-                            { label: 'Industry / NIC Code', value: industry, desc: 'Primary Economic Activity Code', icon: ICONS.FileText },
+                            { label: 'Industry (NIC-2008)', value: industryName, desc: industryDesc, icon: ICONS.FileText },
                             { label: 'State of Registration', value: `${STATE_CODES[stateCode] || 'Unknown State'} (${stateCode})`, icon: ICONS.MapPin },
                             { label: 'Year of Incorporation', value: year, icon: ICONS.Calendar },
                             { label: 'Company Type', value: `${COMPANY_TYPES[compType] || 'Other/Unknown'} (${compType})`, icon: ICONS.Building },
